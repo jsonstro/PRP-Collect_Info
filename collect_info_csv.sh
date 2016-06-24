@@ -37,6 +37,8 @@ if [ "$#" -gt 0 ]; then
 		if [ "$args" -eq 1 ]; then
 			mlnx_tune
 		fi
+    else
+        echo "\", \" * --> Did not detect a Mellanox ($drv) at $iface!"
 	fi
 	echo "\", \"" #Interrupts for $iface?"
 	cat /proc/interrupts | head -1
