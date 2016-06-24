@@ -1,4 +1,9 @@
 #! /bin/bash
+
+# PRP Collect_Info CSV v0.1
+# Written by Josh Sonstroem on 22 June 2016 for the NSF PRP
+# This version outputs to CSV (single line) format
+
 args=0
 count=0
 

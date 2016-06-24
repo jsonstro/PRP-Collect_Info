@@ -1,4 +1,9 @@
 #! /bin/bash
+
+# PRP Collect_Info v0.1
+# Written by Josh Sonstroem on 21 June 2016 for the NSF PRP
+# This version outputs in human readable format
+
 args=0
 count=0
 
