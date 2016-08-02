@@ -1,15 +1,15 @@
 #! /bin/bash
 
-# PRP Collect_Info CSV v0.1
+# PRP Collect_Info CSV v0.2
 # Written by Josh Sonstroem on 22 June 2016 for the NSF PRP
 # This version outputs to CSV (single line) format
 
 args=0
 count=0
 
-while getopts 'v' flag; do
+while getopts 'm' flag; do
     case "${flag}" in
-        v) args='1' ;;
+        m) args='1' ;;
         *) error "Unexpected option ${flag}" ;;
     esac
 done
@@ -48,7 +48,7 @@ if [ "$#" -gt 0 ]; then
             fi
         else
             echo "\", \" * --> Did not detect a Mellanox ($drv) at $iface!"
-	    fi
+        fi
         echo "\", \"" #Interrupts for $iface?"
         cat /proc/interrupts | head -1
         drvs=$(cat /proc/interrupts | egrep "$drv" | head -$count | tail -1)
@@ -64,16 +64,14 @@ if [ "$#" -gt 0 ]; then
         ethtool -k $iface | grep -v fixed | grep -v $iface | egrep -v ^$
         echo "\", \""
         ethtool --show-priv-flags $iface | grep -v $iface | egrep -v ^$
-        #	echo "\","
-        #	echo ""
     done
-    echo "\""
+echo "\""
 else
     ifconfig -a
     echo ""
     echo "--> Choose from the list of available interfaces above..."
     echo ""
-    echo "Usage: ./collect_info_csv.sh [-v] IF1 IF2 ... IFn > outfile.csv "
-    echo "  -v = run the mlnx_tune script if a mellanox is detected at any interface"
+    echo "Usage: ./collect_info_csv.sh [-m] IF1 IF2 ... IFn > outfile.csv "
+    echo "  -m = run the mlnx_tune script if a mellanox is detected at any interface"
     echo ""
 fi
