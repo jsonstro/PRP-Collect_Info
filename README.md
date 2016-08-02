@@ -8,5 +8,7 @@ NOTE: the script does not modify any settings, but feel free to run as non-privi
 
 **CSV Generation Instructions:**
  *  As root, invoke the script with a space separated list of all your NIC names as arguments and redirect output into a file
+
      # ./collect_info_csv.sh eth0 eth4 > out.csv 
+
  *  Use the Google Doc file > import routine to import the new CSV file as a new row, columns for hosts with up to 2 NICs will work automatically.
